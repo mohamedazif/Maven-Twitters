@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>repository</artifactId>
+    <artifactId>viewer</artifactId>
 
     <properties>
         <maven.compiler.source>24</maven.compiler.source>
@@ -21,6 +21,18 @@
         <dependency>
             <groupId>org.twitter</groupId>
             <artifactId>model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.twitter</groupId>
+            <artifactId>controller</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.twitter</groupId>
+            <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
