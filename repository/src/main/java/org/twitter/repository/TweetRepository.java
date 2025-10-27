@@ -10,7 +10,7 @@ import java.util.Collection;
  * Repository for storing and retrieving tweets.
  * Uses in-memory storage for all tweets in the application.
  *
- * @version                     1.0 15 Oct 2025
+ * @version                     1.0
  * @author                      Mohamed Abdul Azif
  */
 public final class TweetRepository {
@@ -22,7 +22,7 @@ public final class TweetRepository {
     /**
      * Adds a tweet to the global list of tweets.
      *
-     * @param tweet the tweet to be added
+     * @param tweet     The tweet to be added
      */
     public static boolean addTweet(final Tweet tweet) {
         return ALL_TWEETS.add(tweet);
@@ -51,7 +51,7 @@ public final class TweetRepository {
         final Collection<Tweet> timelineTweets = new ArrayList<>();
 
         for (final Tweet tweet : ALL_TWEETS) {
-            if (user.getFollowing().contains(tweet.getUserId())) {
+            if (FollowRepository.getFollowing(user.getUserId()).contains(tweet.getUserId())) {
                 timelineTweets.add(tweet);
             }
         }

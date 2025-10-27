@@ -2,9 +2,7 @@ package org.twitter.repository;
 
 import org.twitter.model.User;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Repository for storing user and their information.
@@ -20,8 +18,8 @@ public final class UserRepository {
      * Adds a new user to the repository after validating uniqueness
      * of userId and email.
      *
-     * @param user      The user object to register
-     * @return          True if registration is successful; false otherwise
+     * @param user          The user object to register
+     * @return              True if registration is successful; false otherwise
      */
     public static boolean addRegisteredUser(final User user) {
         // Check if userId is already in use
@@ -31,7 +29,7 @@ public final class UserRepository {
         }
 
         // Check if email is already in use
-        for (User u : USERS_LIST.values()) {
+        for (final User u : USERS_LIST.values()) {
             if (u.getEmail().equalsIgnoreCase(user.getEmail())) {
                 System.err.println("Email is already registered!");
                 return false;
@@ -56,7 +54,7 @@ public final class UserRepository {
     /**
      * Static method to return all the registered Users.
      *
-     * @return Returns a hashmap of Users where UserID is mapped to User Object
+     * @return          Returns a hashmap of Users where UserID is mapped to User Object
      */
     public static Map<String, User> getUsersList() {
         return Collections.unmodifiableMap(USERS_LIST);

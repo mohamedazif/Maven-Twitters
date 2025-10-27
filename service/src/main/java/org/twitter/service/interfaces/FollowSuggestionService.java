@@ -3,6 +3,7 @@ package org.twitter.service.interfaces;
 import org.twitter.model.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface FollowSuggestionService {
     /**
@@ -14,4 +15,8 @@ public interface FollowSuggestionService {
      * Makes one user follow another.
      */
     void followUser(User follower, User toFollow);
+
+    Set<String> getFollowers(String userId);
+
+    Set<String> getFollowing(String userId);
 }

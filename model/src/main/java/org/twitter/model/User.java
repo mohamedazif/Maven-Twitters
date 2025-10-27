@@ -13,9 +13,6 @@ import java.util.HashSet;
  */
 public final class User {
 
-    private final Collection<String> followers = new HashSet<>();
-    private final Collection<String> following = new HashSet<>();
-    private final Collection<Retweet> retweets = new ArrayList<>();
     private final String userId;
     private final String email;
 
@@ -34,7 +31,8 @@ public final class User {
      * @param age      user's age
      * @param bio      short biography
      */
-    public User(final String userName, final String userId, final String email, final String password, final int age, final String bio) {
+    public User(final String userName, final String userId, final String email,
+                final String password, final int age, final String bio) {
         this.userName = userName;
         this.userId = userId;
         this.email = email;
@@ -81,17 +79,5 @@ public final class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public Collection<String> getFollowers() {
-        return followers;
-    }
-
-    public Collection<String> getFollowing() {
-        return following;
-    }
-
-    public Collection<Retweet> getRetweets() {
-        return retweets;
     }
 }

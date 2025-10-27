@@ -3,6 +3,7 @@ package org.twitter.service;
 import org.twitter.model.Retweet;
 import org.twitter.model.Tweet;
 import org.twitter.model.User;
+import org.twitter.repository.RetweetRepository;
 import org.twitter.repository.TweetRepository;
 import org.twitter.service.interfaces.TimelineService;
 
@@ -11,7 +12,7 @@ import java.util.Collection;
 /**
  * Displays the tweets of the users followed by the logged-in user.
  *
- * @version             1.0 15 Oct 2025
+ * @version             1.0
  * @author              Mohamed Abdul Azif
  */
 public final class UserTimeline implements TimelineService {
@@ -62,7 +63,7 @@ public final class UserTimeline implements TimelineService {
         }
 
         tweet.addRetweeter(user.getUserId());
-        user.getRetweets().add(new Retweet(tweet, user.getUserId()));
+        RetweetRepository.saveRetweet(user.getUserId(), new Retweet(tweet, user.getUserId()));
         return true;
     }
 }

@@ -24,8 +24,8 @@ public final class TimelineController {
     /**
      * To get Timeline tweets for the User.
      *
-     * @param user  Logged-In user
-     * @return      Collection of Timeline tweets
+     * @param user      Logged-In user
+     * @return          Collection of Timeline tweets
      */
     public Collection<Tweet> getTimelineTweets(final User user) {
         return timelineService.getTimelineTweets(user);

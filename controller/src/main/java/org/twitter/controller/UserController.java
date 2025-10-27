@@ -26,13 +26,13 @@ public final class UserController {
     /**
      * To register the user with provided credentials.
      *
-     * @param userName Name of the user
-     * @param email E-mail ID of the user
-     * @param userID User-ID created by the user
-     * @param password Password provided by the user
-     * @param age Age of the user
-     * @param bio Biography of the user
-     * @return Whether the user registered or not
+     * @param userName      Name of the user
+     * @param email         E-mail ID of the user
+     * @param userID        User-ID created by the user
+     * @param password      Password provided by the user
+     * @param age           Age of the user
+     * @param bio           Biography of the user
+     * @return              Whether the user registered or not
      */
     public boolean registerUser(final String userName, final String email,
                                 final String userID, final String password,

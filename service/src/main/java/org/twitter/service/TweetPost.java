@@ -10,7 +10,7 @@ import org.twitter.service.interfaces.TweetService;
  * @version             1.0 15-Oct-2025
  * @author              Mohamed Abdul Azif
  */
-public class TweetPost implements TweetService {
+public final class TweetPost implements TweetService {
 
     /**
      * Allows user to post a tweet.
@@ -21,7 +21,6 @@ public class TweetPost implements TweetService {
      */
     @Override
     public boolean postTweet(final String userId, final String tweetContent) {
-        final Tweet tweet = new Tweet(Utility.nextTweetId(), userId, tweetContent);
-        return TweetRepository.addTweet(tweet);
+        return TweetRepository.addTweet(new Tweet(Utility.nextTweetId(), userId, tweetContent));
     }
 }

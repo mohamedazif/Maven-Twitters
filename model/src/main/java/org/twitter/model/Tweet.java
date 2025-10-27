@@ -62,11 +62,11 @@ public class Tweet {
         likedBy.add(userId);
     }
 
-    public boolean isRetweetedBy(String userId) {
+    public boolean isRetweetedBy(final String userId) {
         return retweetedBy.contains(userId);
     }
 
-    public void addRetweeter(String userId) {
+    public void addRetweeter(final String userId) {
         retweetedBy.add(userId);
     }
 }

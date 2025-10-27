@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @version             1.0 15-Oct-2025
  * @author              Mohamed Abdul Azif
  */
-public class ProfileEditView {
+public final class ProfileEditView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private final ProfileEditController controller = new ProfileEditController();
@@ -77,7 +77,7 @@ public class ProfileEditView {
      * @param user Logged-in User
      */
     private void changeAge(final User user) {
-        System.out.print("Enter new age: ");
+        System.out.print("Your current age: " + user.getAge() + "\nEnter new age: ");
         int age = SCANNER.nextInt();
         controller.changeAge(user, age);
         System.out.println("Age changed successfully!");

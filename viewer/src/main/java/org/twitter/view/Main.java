@@ -9,7 +9,14 @@ import org.twitter.service.Utility;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
+/**
+ * Main class which acts as a viewer
+ *
+ * @version         1.0
+ * @author          Mohamed Azif
+ */
 public final class Main {
 
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -209,13 +216,17 @@ public final class Main {
      */
     private static void showProfile() {
         ProfileController profileController = new ProfileController();
+        FollowSuggestionController followController = new FollowSuggestionController();
+
         System.out.println(
                 "\nUserId: " + loggedUser.getUserId()
                         + "\nWelcome " + loggedUser.getUserName()
                         + " to the Twitter World"
                         + "\nBio: " + loggedUser.getBio()
-                        + "\nFollowing: " + loggedUser.getFollowing().size()
-                        + "\nFollowers: " + loggedUser.getFollowers().size()
+                        + "\nFollowing: " + followController.
+                        getFollowing(loggedUser.getUserId()).size()
+                        + "\nFollowers: " + followController.
+                        getFollowers(loggedUser.getUserId()).size()
                         + "\n\nMy Tweets:");
 
         List<Object> tweets  = profileController.getUserProfileTweets(loggedUser);
@@ -234,7 +245,7 @@ public final class Main {
                         + ct.tweet().getTweetContent()
                         + "\nLikes: " + ct.tweet().getLikedBy().size()
                         + "\tRetweets: " + ct.tweet().getRetweetedBy().size()
-                        + "-----------------------------------------------");
+                        + "\n-----------------------------------------------");
             }
         }
     }
@@ -270,6 +281,8 @@ public final class Main {
         FollowSuggestionController followSuggestionController = new FollowSuggestionController();
 
         List<User> suggestions = followSuggestionController.getSuggestedUser(loggedUser);
+        Set<String> followers = followSuggestionController.getFollowers(loggedUser.getUserId());
+        Set<String> following = followSuggestionController.getFollowing(loggedUser.getUserId());
 
         if (suggestions.isEmpty()) {
             System.out.println("No suggestions available right now.");
@@ -279,8 +292,8 @@ public final class Main {
         System.out.println("Follow Suggestions for " + loggedUser.getUserName() + ":");
         for (final User suggUser : suggestions) {
             System.out.println("User-ID: " + suggUser.getUserId());
-            System.out.println("Followers: " + suggUser.getFollowers().size()
-                    + " | Following: " + suggUser.getFollowing().size()
+            System.out.println("Followers: " + followers.size()
+                    + " | Following: " + following.size()
                     + "\nEnter 1 to Follow or 0 to Skip: ");
 
             int choice = SCANNER.nextInt();

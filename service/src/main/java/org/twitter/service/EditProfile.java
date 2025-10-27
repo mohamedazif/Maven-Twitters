@@ -3,13 +3,15 @@ package org.twitter.service;
 import org.twitter.model.User;
 import org.twitter.service.interfaces.EditService;
 
+import java.util.Objects;
+
 /**
  * To edit the details of the user.
  *
  * @version             1.0 15-Oct-2025
  * @author              Mohamed Abdul Azif
  */
-public class EditProfile implements EditService {
+public final class EditProfile implements EditService {
 
     /**
      * To change the username.
@@ -19,7 +21,8 @@ public class EditProfile implements EditService {
      */
     @Override
     public void changeUsername(final User user, final String newUsername) {
-        if (newUsername == null || newUsername.trim().isEmpty()) {
+
+        if (Objects.isNull(newUsername) || newUsername.isEmpty()) {
             throw new IllegalArgumentException("Username cannot be empty.");
         }
         user.setUserName(newUsername.trim());
@@ -33,10 +36,10 @@ public class EditProfile implements EditService {
      */
     @Override
     public void changePassword(final User user, final String newPassword) {
-        if (!Utility.isValidPassword(newPassword)) {
-            throw new IllegalArgumentException("Invalid password format!");
+        if (Utility.isValidPassword(newPassword)) {
+            user.setPassword(Utility.hashPassword(newPassword));
         }
-        user.setPassword(Utility.hashPassword(newPassword));
+        throw new IllegalArgumentException("Invalid password format!");
     }
 
     /**
@@ -47,7 +50,7 @@ public class EditProfile implements EditService {
      */
     @Override
     public void changeAge(final User user, final int newAge) {
-        if (newAge <= 0) {
+        if (0 >= newAge) {
             throw new IllegalArgumentException("Age must be positive.");
         }
         user.setAge(newAge);
@@ -61,7 +64,7 @@ public class EditProfile implements EditService {
      */
     @Override
     public void changeBio(final User user, final String newBio) {
-        if (newBio == null) {
+        if (Objects.isNull(newBio)) {
             throw new IllegalArgumentException("Bio cannot be null.");
         }
         user.setBio(newBio.trim());

@@ -10,7 +10,7 @@ import org.twitter.service.interfaces.EditService;
  * @version             1.0 15 Oct 2025
  * @author              Mohamed Abdul Azif
  */
-public class ProfileEditController {
+public final class ProfileEditController {
 
     private final EditService editService;
 
@@ -41,8 +41,8 @@ public class ProfileEditController {
     /**
      * To change the age.
      *
-     * @param user      Logged-in User
-     * @param newAge    New age of the user
+     * @param user          Logged-in User
+     * @param newAge        New age of the user
      */
     public void changeAge(final User user, final int newAge) {
         editService.changeAge(user, newAge);
@@ -51,8 +51,8 @@ public class ProfileEditController {
     /**
      * To change the bio.
      *
-     * @param user      Logged-in User
-     * @param newBio    New Bio of the user
+     * @param user          Logged-in User
+     * @param newBio        New Bio of the user
      */
     public void changeBio(final User user, final String newBio) {
         editService.changeBio(user, newBio);

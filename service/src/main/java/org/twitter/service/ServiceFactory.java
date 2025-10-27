@@ -11,6 +11,7 @@ import org.twitter.service.interfaces.*;
 public final class ServiceFactory {
     private static final ServiceFactory INSTANCE = new ServiceFactory();
 
+    // Private constructor
     private ServiceFactory() { }
 
     /**
