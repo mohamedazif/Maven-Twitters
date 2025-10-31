@@ -34,6 +34,13 @@ public class Tweet {
         this.createdAt = LocalDateTime.now();
     }
 
+    public Tweet(final int tweetId, final String userId, final String tweetContent, final LocalDateTime createdAt) {
+        this.tweetId = tweetId;
+        this.userId = userId;
+        this.tweetContent = tweetContent;
+        this.createdAt = createdAt;
+    }
+
     public int getTweetId() {
         return tweetId;
     }

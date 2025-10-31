@@ -51,7 +51,7 @@ public final class TweetRepository {
         final Collection<Tweet> timelineTweets = new ArrayList<>();
 
         for (final Tweet tweet : ALL_TWEETS) {
-            if (FollowRepository.getFollowing(user.getUserId()).contains(tweet.getUserId())) {
+            if (FollowRepository.getFollowing(user.getId()).contains(tweet.getUserId())) {
                 timelineTweets.add(tweet);
             }
         }

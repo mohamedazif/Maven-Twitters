@@ -38,6 +38,7 @@ public final class EditProfile implements EditService {
     public void changePassword(final User user, final String newPassword) {
         if (Utility.isValidPassword(newPassword)) {
             user.setPassword(Utility.hashPassword(newPassword));
+            return;
         }
         throw new IllegalArgumentException("Invalid password format!");
     }

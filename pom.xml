@@ -14,6 +14,12 @@
         <module>repository</module>
         <module>service</module>
         <module>viewer</module>
+        <module>database</module>
+        <module>user</module>
+        <module>tweet</module>
+        <module>follow</module>
+        <module>console</module>
+        <module>timeline</module>
     </modules>
 
     <properties>

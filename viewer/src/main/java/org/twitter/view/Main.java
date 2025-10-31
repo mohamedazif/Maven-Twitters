@@ -173,7 +173,7 @@ public final class Main {
         TimelineController timelineController = new TimelineController();
         Collection<Tweet> timelineTweets = timelineController.getTimelineTweets(loggedUser);
 
-        System.out.println("Timeline of " + loggedUser.getUserId());
+        System.out.println("Timeline of " + loggedUser.getId());
 
         if (timelineTweets.isEmpty()) {
             System.out.println("Follow someone to build your timeline...");
@@ -219,14 +219,14 @@ public final class Main {
         FollowSuggestionController followController = new FollowSuggestionController();
 
         System.out.println(
-                "\nUserId: " + loggedUser.getUserId()
+                "\nUserId: " + loggedUser.getId()
                         + "\nWelcome " + loggedUser.getUserName()
                         + " to the Twitter World"
                         + "\nBio: " + loggedUser.getBio()
                         + "\nFollowing: " + followController.
-                        getFollowing(loggedUser.getUserId()).size()
+                        getFollowing(loggedUser.getId()).size()
                         + "\nFollowers: " + followController.
-                        getFollowers(loggedUser.getUserId()).size()
+                        getFollowers(loggedUser.getId()).size()
                         + "\n\nMy Tweets:");
 
         List<Object> tweets  = profileController.getUserProfileTweets(loggedUser);
@@ -269,8 +269,8 @@ public final class Main {
         }
 
         TweetController tweetController = new TweetController();
-        if (tweetController.postTweet(loggedUser.getUserId(), tweetContent)){
-            System.out.println("Tweet posted successfully by " + loggedUser.getUserId());
+        if (tweetController.postTweet(loggedUser.getId(), tweetContent)){
+            System.out.println("Tweet posted successfully by " + loggedUser.getId());
         }
     }
 
@@ -281,8 +281,8 @@ public final class Main {
         FollowSuggestionController followSuggestionController = new FollowSuggestionController();
 
         List<User> suggestions = followSuggestionController.getSuggestedUser(loggedUser);
-        Set<String> followers = followSuggestionController.getFollowers(loggedUser.getUserId());
-        Set<String> following = followSuggestionController.getFollowing(loggedUser.getUserId());
+        Set<String> followers = followSuggestionController.getFollowers(loggedUser.getId());
+        Set<String> following = followSuggestionController.getFollowing(loggedUser.getId());
 
         if (suggestions.isEmpty()) {
             System.out.println("No suggestions available right now.");
@@ -291,7 +291,7 @@ public final class Main {
 
         System.out.println("Follow Suggestions for " + loggedUser.getUserName() + ":");
         for (final User suggUser : suggestions) {
-            System.out.println("User-ID: " + suggUser.getUserId());
+            System.out.println("User-ID: " + suggUser.getId());
             System.out.println("Followers: " + followers.size()
                     + " | Following: " + following.size()
                     + "\nEnter 1 to Follow or 0 to Skip: ");
@@ -299,7 +299,7 @@ public final class Main {
             int choice = SCANNER.nextInt();
             if (choice == 1) {
                 followSuggestionController.followUser(loggedUser, suggUser);
-                System.out.println("You are now following " + suggUser.getUserId());
+                System.out.println("You are now following " + suggUser.getId());
             }
         }
     }

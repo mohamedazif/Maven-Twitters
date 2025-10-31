@@ -28,11 +28,11 @@ public final class FollowSuggestions implements FollowSuggestionService {
     public List<User> getSuggestedUsers(final User user) {
         final List<User> suggestions = new ArrayList<>();
         final Map<String, User> usersList = UserRepository.getUsersList();
-        final Set<String> following = FollowRepository.getFollowing(user.getUserId());
+        final Set<String> following = FollowRepository.getFollowing(user.getId());
 
         for (final User suggestUser : usersList.values()) {
-            if (!suggestUser.getUserId().equals(user.getUserId()) &&
-                    !following.contains(suggestUser.getUserId())) {
+            if (!suggestUser.getId().equals(user.getId()) &&
+                    !following.contains(suggestUser.getId())) {
                 suggestions.add(suggestUser);
             }
         }
@@ -48,7 +48,7 @@ public final class FollowSuggestions implements FollowSuggestionService {
      */
     @Override
     public void followUser(final User follower, final User toFollow) {
-        FollowRepository.follow(follower.getUserId(), toFollow.getUserId());
+        FollowRepository.follow(follower.getId(), toFollow.getId());
     }
 
     /**

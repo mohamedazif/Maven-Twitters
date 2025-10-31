@@ -23,7 +23,7 @@ public final class UserRepository {
      */
     public static boolean addRegisteredUser(final User user) {
         // Check if userId is already in use
-        if (USERS_LIST.containsKey(user.getUserId())) {
+        if (USERS_LIST.containsKey(user.getId())) {
             System.err.println("User ID already exists!");
             return false;
         }
@@ -37,7 +37,7 @@ public final class UserRepository {
         }
 
         // Both are unique register the user
-        USERS_LIST.put(user.getUserId(), user);
+        USERS_LIST.put(user.getId(), user);
         return true;
     }
 

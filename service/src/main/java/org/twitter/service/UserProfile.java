@@ -31,12 +31,12 @@ public final class UserProfile implements ProfileService {
         final List<CombinedTweets> ogNrtTweets = new ArrayList<>();
 
         // Original Tweets
-        for (final Tweet tweet : TweetRepository.getSpecificUserTweets(user.getUserId())) {
+        for (final Tweet tweet : TweetRepository.getSpecificUserTweets(user.getId())) {
             ogNrtTweets.add(new CombinedTweets(tweet.getCreatedAt(), tweet, false));
         }
 
         // Retweets
-        for (final Retweet retweet : RetweetRepository.getUserRetweets(user.getUserId())) {
+        for (final Retweet retweet : RetweetRepository.getUserRetweets(user.getId())) {
             ogNrtTweets.add(new CombinedTweets(retweet.getRetweetedAt(),
                     retweet.getOgTweet(), true));
         }

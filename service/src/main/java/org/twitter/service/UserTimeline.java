@@ -38,12 +38,12 @@ public final class UserTimeline implements TimelineService {
     @Override
     public boolean likeTweet(final User user, final Tweet tweet) {
 
-        if (tweet.getLikedBy().contains(user.getUserId())) {
+        if (tweet.getLikedBy().contains(user.getId())) {
             System.err.println("Tweet already liked!");
             return false;
         }
 
-        tweet.addLikedBy(user.getUserId());
+        tweet.addLikedBy(user.getId());
         return true;
     }
 
@@ -57,13 +57,13 @@ public final class UserTimeline implements TimelineService {
     @Override
     public boolean retweet(final User user, final Tweet tweet) {
 
-        if (tweet.isRetweetedBy(user.getUserId())) {
+        if (tweet.isRetweetedBy(user.getId())) {
             System.err.println("Tweet retweeted already!");
             return false;
         }
 
-        tweet.addRetweeter(user.getUserId());
-        RetweetRepository.saveRetweet(user.getUserId(), new Retweet(tweet, user.getUserId()));
+        tweet.addRetweeter(user.getId());
+        RetweetRepository.saveRetweet(user.getId(), new Retweet(tweet, user.getId()));
         return true;
     }
 }

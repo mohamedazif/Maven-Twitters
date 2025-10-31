@@ -1,9 +1,5 @@
 package org.twitter.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-
 /**
  * Represents a user in the Twitter-like application.
  * Holds personal details and lists of followers and following.
@@ -13,7 +9,7 @@ import java.util.HashSet;
  */
 public final class User {
 
-    private final String userId;
+    private final String id;
     private final String email;
 
     private String userName;
@@ -34,7 +30,7 @@ public final class User {
     public User(final String userName, final String userId, final String email,
                 final String password, final int age, final String bio) {
         this.userName = userName;
-        this.userId = userId;
+        this.id = userId;
         this.email = email;
         this.password = password;
         this.age = age;
@@ -49,8 +45,8 @@ public final class User {
         this.userName = userName;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
     public String getBio() {
