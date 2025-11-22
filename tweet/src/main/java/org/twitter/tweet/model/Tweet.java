@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class Tweet {
 
     private final int tweetId;
-    private final String userId;
+    private final long userId;
     private final String tweetContent;
     private final LocalDateTime createdAt;
 
@@ -22,7 +22,7 @@ public class Tweet {
      * @param userId        the ID of the user who posted the tweet
      * @param tweetContent  the content of the tweet
      */
-    public Tweet(final String userId, final String tweetContent) {
+    public Tweet(final long userId, final String tweetContent) {
         this.tweetId = 0;
         this.userId = userId;
         this.tweetContent = tweetContent;
@@ -37,7 +37,7 @@ public class Tweet {
      * @param tweetContent  Content of the tweet
      * @param createdAt     Time the tweet got posted.
      */
-    public Tweet(final int tweetId, final String userId,
+    public Tweet(final int tweetId, final long userId,
                  final String tweetContent, final LocalDateTime createdAt) {
         this.tweetId = tweetId;
         this.userId = userId;
@@ -49,7 +49,7 @@ public class Tweet {
         return tweetId;
     }
 
-    public String getUserId() {
+    public long getUserId() {
         return userId;
     }
 

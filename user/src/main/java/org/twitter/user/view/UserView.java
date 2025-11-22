@@ -2,7 +2,7 @@ package org.twitter.user.view;
 
 import org.twitter.user.controller.UserController;
 import org.twitter.user.model.User;
-import org.twitter.user.service.Utility;
+import org.twitter.user.service.UserValidationUtils;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -17,6 +17,12 @@ public final class UserView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
+    private final UserController controller;
+
+    public UserView(final UserController userController) {
+        this.controller = userController;
+    }
+
     /**
      * View for user register.
      */
@@ -26,17 +32,17 @@ public final class UserView {
         System.out.println("Enter Email-Id:");
         final String email = SCANNER.next();
 
-        if (!Utility.isValidEmail(email)) {
+        if (!UserValidationUtils.isValidEmail(email)) {
             System.err.println("Invalid Email\nUser not registered");
             return;
         }
 
         System.out.println("Create User-ID:");
-        final String userId = SCANNER.next();
+        final String handle = SCANNER.next();
         System.out.println("Create Password:");
         final String password = SCANNER.next();
 
-        if (!Utility.isValidPassword(password)) {
+        if (!UserValidationUtils.isValidPassword(password)) {
             System.err.println("Password must contain an Uppercase, a "
                     + "lowercase and a digit and with minimum 8 characters");
             return;
@@ -46,10 +52,9 @@ public final class UserView {
         final int age = SCANNER.nextInt();
         SCANNER.nextLine();
         System.out.println("Tell about yourself:");
-        String bio = SCANNER.nextLine();
+        final String bio = SCANNER.nextLine();
 
-        UserController userController = new UserController();
-        if (userController.registerUser(userId, email,
+        if (controller.registerUser(handle, email,
                 userName, password, age, bio)) {
             System.out.println("User Registered successfully!");
         } else {
@@ -62,12 +67,12 @@ public final class UserView {
      */
     public User loginUser() {
         System.out.println("Enter your User-Id:");
-        final String userId = SCANNER.next();
+        final String handle = SCANNER.next();
         System.out.println("Enter your Password:");
         final String password = SCANNER.next();
+        SCANNER.nextLine();
 
-        UserController userController = new UserController();
-        User loggedUser = userController.loginUser(userId, Utility.hashPassword(password));
+        final User loggedUser = controller.loginUser(handle, password);
 
         if (Objects.isNull(loggedUser)) {
             System.err.println("Invalid UserId or Password!");
@@ -75,9 +80,5 @@ public final class UserView {
             System.out.println("User logged in!");
         }
         return loggedUser;
-    }
-
-    public void showProfile(final User toViewUser) {
-
     }
 }

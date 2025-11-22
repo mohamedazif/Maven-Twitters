@@ -1,7 +1,6 @@
 package org.twitter.tweet.controller;
 
-
-import org.twitter.tweet.service.TweetPost;
+import org.twitter.tweet.model.Tweet;
 import org.twitter.tweet.service.TweetService;
 
 /**
@@ -25,7 +24,7 @@ public final class TweetController {
      * @param tweetContent  Content of the tweet to post
      * @return              Whether tweet posted or not
      */
-    public boolean postTweet(final String userId, final String tweetContent) {
-        return tweetService.postTweet(userId, tweetContent);
+    public boolean postTweet(final long userId, final String tweetContent) {
+        return tweetService.post(new Tweet(userId, tweetContent));
     }
 }

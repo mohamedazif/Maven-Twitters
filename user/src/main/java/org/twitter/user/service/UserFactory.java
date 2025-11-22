@@ -1,5 +1,9 @@
 package org.twitter.user.service;
 
+import org.twitter.user.repository.UserRepositoryImpl;
+import org.twitter.user.service.impl.UserLoginServiceImpl;
+import org.twitter.user.service.impl.UserRegisterServiceImpl;
+
 /**
  * To manage object creation of user services in a same place.
  *
@@ -24,8 +28,8 @@ public final class UserFactory {
      *
      * @return Object of Register
      */
-    public RegisterService getRegisterService() {
-        return new Register();
+    public UserRegisterService getRegisterService() {
+        return new UserRegisterServiceImpl(new UserRepositoryImpl());
     }
 
     /**
@@ -33,16 +37,7 @@ public final class UserFactory {
      *
      * @return Object of Login
      */
-    public LoginService getLoginService() {
-        return new Login();
-    }
-
-    /**
-     * Creates object for EditProfile.
-     *
-     * @return Object of EditProfile
-     */
-    public EditProfileService getEditService() {
-        return new EditProfile();
+    public UserLoginService getLoginService() {
+        return new UserLoginServiceImpl(new UserRepositoryImpl());
     }
 }

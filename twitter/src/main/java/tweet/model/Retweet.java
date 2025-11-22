@@ -1,0 +1,42 @@
+package tweet.model;
+
+import org.twitter.tweet.model.Tweet;
+
+import java.time.LocalDateTime;
+
+/**
+ * Gathers info about Retweeted tweets.
+ *
+ * @version         1.0
+ * @author          Mohamed Abdul Azif
+ */
+public class Retweet extends Tweet {
+
+    private final long  retweetedUserId;
+    private final Tweet ogTweet;
+    private final LocalDateTime retweetedAt;
+
+    /**
+     * Constructor for the Retweet class.
+     * @param ogTweet           Tweet object which was retweeted
+     * @param retweetedUserId   User-ID of the user who retweeted the tweet
+     */
+    public Retweet(final Tweet ogTweet, final long retweetedUserId) {
+        super(ogTweet.getTweetId(), ogTweet.getUserId(), ogTweet.getTweetContent(), ogTweet.getCreatedAt());
+        this.ogTweet = ogTweet;
+        this.retweetedUserId = retweetedUserId;
+        this.retweetedAt = LocalDateTime.now();
+    }
+
+    public long getRetweetedUserId() {
+        return retweetedUserId;
+    }
+
+    public Tweet getOgTweet() {
+        return ogTweet;
+    }
+
+    public LocalDateTime getRetweetedAt() {
+        return retweetedAt;
+    }
+}

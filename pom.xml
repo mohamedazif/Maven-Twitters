@@ -9,17 +9,14 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>controller</module>
-        <module>model</module>
-        <module>repository</module>
-        <module>service</module>
-        <module>viewer</module>
         <module>database</module>
         <module>user</module>
         <module>tweet</module>
         <module>follow</module>
         <module>console</module>
         <module>timeline</module>
+        <module>profile</module>
+        <module>twitter</module>
     </modules>
 
     <properties>

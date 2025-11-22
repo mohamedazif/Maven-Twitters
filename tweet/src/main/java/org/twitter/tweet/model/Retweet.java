@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
  * @version         1.0
  * @author          Mohamed Abdul Azif
  */
-public final class Retweet extends Tweet {
+public class Retweet extends Tweet {
 
-    private final String  retweetedUserId;
+    private final long  retweetedUserId;
     private final Tweet ogTweet;
     private final LocalDateTime retweetedAt;
 
@@ -19,14 +19,14 @@ public final class Retweet extends Tweet {
      * @param ogTweet           Tweet object which was retweeted
      * @param retweetedUserId   User-ID of the user who retweeted the tweet
      */
-    public Retweet(final Tweet ogTweet, final String retweetedUserId) {
+    public Retweet(final Tweet ogTweet, final long retweetedUserId) {
         super(ogTweet.getTweetId(), ogTweet.getUserId(), ogTweet.getTweetContent(), ogTweet.getCreatedAt());
         this.ogTweet = ogTweet;
         this.retweetedUserId = retweetedUserId;
         this.retweetedAt = LocalDateTime.now();
     }
 
-    public String getRetweetedUserId() {
+    public long getRetweetedUserId() {
         return retweetedUserId;
     }
 
